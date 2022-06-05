@@ -85,3 +85,8 @@ xyxyxy
 xyxyxyxy
 xyxyxyxyxy  <---The effect when you console.log it
 */
+function fiveLine(s){
+        const a = s.trim()
+        return(`${a}\n${a.repeat(2)}\n${a.repeat(3)}\n${a.repeat(4)}\n${a.repeat(5)}`.trim())
+    
+}

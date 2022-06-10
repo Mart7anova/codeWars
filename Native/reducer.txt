@@ -1,0 +1,61 @@
+//reduce
+
+const num = [10, 20, 30]
+console.log(num.reduce((acc, el)=>acc+el, 0))
+// 0+10 =>10
+// 10+20=>30
+// 30+30=>60
+console.log(num.reduce((acc,el)=> acc>el? acc: el))
+// без необезательного значения стартового значения acc - 0,
+// в acc попадает объект 1-го el, а в el значение 2-го el
+//10 20 => 20
+//20 30=> 30
+let students = [
+    {
+        name: "Bob",
+        age: 22,
+        isMarried: true,
+        scores: 85
+    },
+    {
+        name: "Alex",
+        age: 21,
+        isMarried: true,
+        scores: 89
+    },
+    {
+        name: "Nick",
+        age: 20,
+        isMarried: false,
+        scores: 120
+    },{
+        name: "John",
+        age: 23,
+        isMarried: false,
+        scores: 100
+    }
+];
+console.log(students.reduce((acc,st)=>acc.scores > st.scores? acc : st))
+console.log(students.reduce((acc,st)=> acc + st.scores, 0)) //стартовое значение 0
+console.log(students.reduce((acc,st)=> acc.scores + st.scores))
+console.log(students.reduce((acc,st)=>{
+    acc.push({...st,scores: st.scores+10})
+    return acc
+},[]))
+// [] => [{
+//         name: "Bob",
+//         age: 22,
+//         isMarried: true,
+//         scores: 95
+//     }]
+
+const newStructure = {
+    "Bob": {age: 22, isMarried: true, scores: 85},
+    "Alex": {age: 21, isMarried: true, scores: 89}
+}
+
+console.log(students.reduce((acc,st)=>{
+    acc[st.name] = {...st}
+    delete acc[st.name].name
+    return acc
+},[]))

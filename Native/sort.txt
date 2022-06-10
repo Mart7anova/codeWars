@@ -1,0 +1,85 @@
+//Array.prototype.sort
+
+const arr1 = [1,2,3,4] //это
+const arr2 = new Array(1,2,3,4) //аналогично этому
+//глобальный объект, который является функцией-конструктор
+//функцией-конструктор - это специальная функция, назначание которой производить однотипные объекты
+
+const name = ['Олег','Michel','Bob', 'Alex', 'Artem', '007']
+
+console.log(name.sort())
+
+const numbers = [100,256,2,35,86]
+
+console.log(numbers.sort())
+
+//return + переместить
+//return - порядок не менять
+
+const compareFunc = (a,b) => { //по возрастанию
+    if(b > a) {return -1}
+    else {return 1}
+}
+console.log(numbers.sort(compareFunc))
+console.log(numbers.sort((a,b)=>a - b))
+
+const students = [
+    {
+        name: 'Bob',
+        age: 22,
+        isMarried: true,
+        scores: 95
+    },
+    {
+        name: 'Anna',
+        age: 26,
+        isMarried: false,
+        scores: 120
+    },
+    {
+        name: 'anna',
+        age: 26,
+        isMarried: true,
+        scores: 120
+    },
+    {
+        name: 'Liliya',
+        age: 32,
+        isMarried: false,
+        scores: 89
+    },
+    {
+        name: 'liliya',
+        age: 32,
+        isMarried: true,
+        scores: 89
+    },
+]
+
+//будет выводиться одно и тоже так как это один и тот же массив, так как метод sort меняет исходный массив
+console.log(students.sort((a,b)=> b.age - a.age)) //по убыванию возвраста
+console.log(students.sort((a,b)=> a.scores - b.scores)) //по возврастанию scores
+console.log(students.sort((a,b)=> a.scores - b.scores).reverse()) //обратный
+console.log(students.sort((a,b)=> a.name < b.name ? -1 : 1)) //по алфавиту
+console.log(students.sort((a,b)=> a.name.localeCompare(b.name))) //по алфавиту тоже самое ток с помощью localCompare
+console.log(students.sort((a,b)=> a.name.toUpperCase() < b.name.toUpperCase() ? -1 : 1)) //по алфавиту
+console.log(students.sort((a)=> a.isMarried ? 1 : -1))
+
+//bubble sort
+const numbers2 = [100,256,2,35,86,11,52,111,-56]
+
+for (let j = 0; j < numbers2.length-1; j++) {
+    let isSort = true
+    for (let i = 0; i < numbers2.length-1-j; i++) { //по возрастанию
+        if (numbers2[i] > numbers2[i+1]){
+            isSort = false;
+            /*let temp = numbers2[i+1]
+            numbers2[i+1] = numbers2[i]
+            numbers2[i] = temp*/
+            [numbers2[i+1],numbers2[i]] = [numbers2[i], numbers2[i+1]]
+        }
+    }
+    if (isSort) break
+}
+
+console.log(numbers2)

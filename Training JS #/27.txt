@@ -67,12 +67,12 @@ countGrade([65,75,,85,85,95,100,100]) should return {S:2, A:1, B:2, C:2, D:0, X:
 countGrade([-1,-1,-1,-1,-1,-1]) should return {S:0, A:0, B:0, C:0, D:0, X:6}*/
 
 function countGrade(scores) {
-        let S = 0, A = 0, B = 0, C = 0, D = 0, X = 0
-        S += scores.filter(s => s === 100 ? s : '').length
-        A += scores.filter(s => s < 100 && s >= 90 ? s : '').length
-        B += scores.filter(s => s < 90 && s >= 80 ? s : '').length
-        C += scores.filter(s => s < 80 && s >= 60 ? s : '').length
-        D += scores.filter(s => s < 60 && s >= 0 ? s : '').length
-        X += scores.filter(s => s <=-1 ? s : '').length
+        let S, A, B, C, D, X
+        S = scores.filter(s => s === 100).length
+        A = scores.filter(s => s < 100 && s >= 90).length
+        B = scores.filter(s => s < 90 && s >= 80).length
+        C = scores.filter(s => s < 80 && s >= 60).length
+        D = scores.filter(s => s < 60 && s >= 0).length
+        X = scores.filter(s => s <=-1).length
         return {S, A, B, C, D, X}
     }
